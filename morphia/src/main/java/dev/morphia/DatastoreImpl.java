@@ -697,7 +697,7 @@ public class DatastoreImpl implements AdvancedDatastore {
         wr = tryVersionedUpdate(dbColl, unwrapped, set, idValue, new InsertOptions().writeConcern(wc), mc);
 
         if (wr == null) {
-            final Query<T> query = (Query<T>) createQuery(unwrapped.getClass()).filter("_id", id);
+            final Query<T> query = (Query<T>) createQuery(unwrapped.getClass()).filter("_id", idValue);
             wr = update(query, set, new UpdateOptions().writeConcern(wc)).getWriteResult();
         }
 
